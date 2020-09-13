@@ -3,16 +3,19 @@
 public class MainCharacter : MonoBehaviour
 {
     Rigidbody rb;
+    Vector3 initialPos;
     float input;
     bool touchedWall;
-    ParticleSystem trailParticles;
+    ParticleSystem trailParticles, HsParticles;
 
     [SerializeField] float speed, force;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        trailParticles = transform.GetChild(0).GetComponent<ParticleSystem>();       
+        trailParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
+        HsParticles = transform.GetChild(1).GetComponent<ParticleSystem>();
+        initialPos = transform.position;
     }
 
     void FixedUpdate()
@@ -37,6 +40,9 @@ public class MainCharacter : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             LevelManager.instance.IncrementScore();
+
+            if (LevelManager.instance.Score == PlayerPrefs.GetInt("HS"))
+                HsParticles.Play();
         }
 
         if (other.CompareTag("GameOver"))
@@ -49,5 +55,13 @@ public class MainCharacter : MonoBehaviour
             touchedWall = true;
         else
             touchedWall = false;
+    }
+
+    public void ResetPos()
+    {
+        rb.position = initialPos;
+        rb.rotation = Quaternion.identity;
+        rb.velocity = Vector3.zero;
+        rb.isKinematic = true; rb.isKinematic = false;
     }
 }

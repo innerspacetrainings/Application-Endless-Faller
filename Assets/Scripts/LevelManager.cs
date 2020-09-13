@@ -8,21 +8,31 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public int Score { get; set; }
 
+    [Header("Objects")]
+    [SerializeField] private GameObject[] platformPrefabs;
+    [SerializeField] private GameObject spawnOrigin;
     [SerializeField] private Text scoreText, HiscoreText;
+    [Header("Values")]
+    public float platformSpeed = .05f;
+    public float maxPlatformSpeed = .1f;
+    [SerializeField] private float maxSpawnInterval, minSpawnInterval, platformLifetime, acceleration = .0002f;
     [Space]
     [SerializeField] private string HomeSceneName;
+    [Header("Menu items")]
     [SerializeField] private GameObject escPopup;
     [SerializeField] private GameObject failPopup;
-    [SerializeField] private GameObject platformPrefab;
-    [SerializeField] private GameObject spawnOrigin;
-    [SerializeField] private float platformLifetime, spawnTimer;
 
+    GameObject[] platforms;
+    float initialSpeed, initialMaxInterval, initialMinInterval, spawnTimer;
     bool fail;
 
     void Start()
     {
         instance = this;
-        InvokeRepeating(nameof(Spawn), 0, spawnTimer);
+        initialSpeed = platformSpeed;
+        initialMaxInterval = maxSpawnInterval;
+        initialMinInterval = minSpawnInterval;
+        Spawn();
         SaveHighScore();
     }
 
@@ -32,6 +42,24 @@ public class LevelManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Escape) && !fail)
             Pause();
+
+
+        platformSpeed += acceleration * Time.deltaTime;
+
+        if (platformSpeed >= maxPlatformSpeed)
+            platformSpeed = maxPlatformSpeed;
+
+        spawnTimer += Time.deltaTime;
+        maxSpawnInterval -= acceleration * ((initialMaxInterval - initialMinInterval)/initialSpeed) * Time.deltaTime;
+
+        if (maxSpawnInterval < minSpawnInterval)
+            maxSpawnInterval = minSpawnInterval;
+
+        if (spawnTimer > maxSpawnInterval)
+        {
+            Spawn();
+            spawnTimer = 0;
+        }
     }
 
     public void Pause()
@@ -51,11 +79,24 @@ public class LevelManager : MonoBehaviour
     public void Reset()
     {
         Time.timeScale = 1;
+        platformSpeed = initialSpeed;
         Score = 0;
         fail = false;
         SaveHighScore();
         failPopup.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        platforms = GameObject.FindGameObjectsWithTag("Platform");
+
+        foreach (var platform in platforms)
+        {
+            Destroy(platform);
+        }
+
+        platformSpeed = initialSpeed;
+        maxSpawnInterval = initialMaxInterval;
+        minSpawnInterval = initialMinInterval;
+        spawnTimer = 0;
+        Spawn();
     }
 
     public void Exit()
@@ -64,16 +105,16 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(HomeSceneName);
     }
 
+    void Spawn()
+    {
+        var newPlatform = Instantiate(platformPrefabs[Random.Range(0, platformPrefabs.Length)]);
+        newPlatform.transform.position = spawnOrigin.transform.position + Vector3.up;
+        Destroy(newPlatform, platformLifetime);
+    }
+
     public void IncrementScore()
     {
         Score++;
-    }
-
-    void Spawn()
-    {
-        var newPlatform = Instantiate(platformPrefab);
-        newPlatform.transform.position = spawnOrigin.transform.position + Vector3.up;
-        Destroy(newPlatform, platformLifetime);
     }
 
     void SaveHighScore()
