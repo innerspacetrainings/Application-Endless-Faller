@@ -31,6 +31,12 @@ public class MainCharacter : MonoBehaviour
             trailParticles.Stop();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("GameOver"))
+            LevelManager.instance.Fail();
+    }
+
     void OnCollisionStay(Collision other)
     {
         if (other.transform.CompareTag("Wall"))

@@ -1,20 +1,63 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary> Manages the state of the level </summary>
 public class LevelManager : MonoBehaviour
 {
-    public int Score { get; private set; }
-    
+    public static LevelManager instance;
+    public int Score { get; set; }
+
+    [SerializeField] private Text scoreText, HiscoreText;
+    [Space]
+    [SerializeField] private string HomeSceneName;
+    [SerializeField] private GameObject escPopup;
+    [SerializeField] private GameObject failPopup;
+
+    bool fail;
+
     void Start()
     {
-        
+        instance = this;
+        SaveHighScore();
     }
 
     void Update()
     {
-        
+        scoreText.text = "SCORE: " + Score;
+
+        if (Input.GetKeyUp(KeyCode.Escape) && !fail)
+            Pause();
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        escPopup.active = !escPopup.active;
+    }
+
+    public void Fail()
+    {
+        fail = true;
+        Time.timeScale = 0;
+        SaveHighScore();
+        failPopup.SetActive(true);
+    }
+
+    public void Reset()
+    {
+        Time.timeScale = 1;
+        Score = 0;
+        fail = false;
+        SaveHighScore();
+        failPopup.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Exit()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(HomeSceneName);
     }
 
     public void IncrementScore()
@@ -22,9 +65,23 @@ public class LevelManager : MonoBehaviour
         Score++;
     }
 
-    public void Reset()
+    void SaveHighScore()
     {
-        Score = 0;
-        // reset logic
+        if (Score > PlayerPrefs.GetInt("HS"))
+        {
+            PlayerPrefs.SetInt("HS", Score);
+            HiscoreText.text = "YOUR NEW HIGH SCORE IS: " + PlayerPrefs.GetInt("HS") + "!!!";
+            HiscoreText.color = Color.red;
+        }
+        else
+        {
+            HiscoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HS");
+            HiscoreText.color = Color.yellow;
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveHighScore();
     }
 }
