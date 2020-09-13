@@ -132,7 +132,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    void OnApplicationQuit()
     {
         SaveHighScore();
     }

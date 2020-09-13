@@ -27,6 +27,8 @@ public class MainCharacter : MonoBehaviour
             rb.angularVelocity = Vector3.back * (input * speed);
             rb.AddForce(Vector3.right * force * input, ForceMode.Impulse);
         }
+        else if (input != 0)
+            rb.angularVelocity = Vector3.back * (input * speed/2);
 
         if (rb.velocity.y > 2)
             trailParticles.Play();
@@ -41,7 +43,7 @@ public class MainCharacter : MonoBehaviour
             other.gameObject.SetActive(false);
             LevelManager.instance.IncrementScore();
 
-            if (LevelManager.instance.Score == PlayerPrefs.GetInt("HS"))
+        if (LevelManager.instance.Score == PlayerPrefs.GetInt("HS"))
                 HsParticles.Play();
         }
 
