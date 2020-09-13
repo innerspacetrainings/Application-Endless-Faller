@@ -13,12 +13,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string HomeSceneName;
     [SerializeField] private GameObject escPopup;
     [SerializeField] private GameObject failPopup;
+    [SerializeField] private GameObject platformPrefab;
+    [SerializeField] private GameObject spawnOrigin;
+    [SerializeField] private float platformLifetime, spawnTimer;
 
     bool fail;
 
     void Start()
     {
         instance = this;
+        InvokeRepeating(nameof(Spawn), 0, spawnTimer);
         SaveHighScore();
     }
 
@@ -63,6 +67,13 @@ public class LevelManager : MonoBehaviour
     public void IncrementScore()
     {
         Score++;
+    }
+
+    void Spawn()
+    {
+        var newPlatform = Instantiate(platformPrefab);
+        newPlatform.transform.position = spawnOrigin.transform.position + Vector3.up;
+        Destroy(newPlatform, platformLifetime);
     }
 
     void SaveHighScore()

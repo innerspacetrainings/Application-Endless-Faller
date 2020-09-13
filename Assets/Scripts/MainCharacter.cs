@@ -33,6 +33,12 @@ public class MainCharacter : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("ScoreTrigger"))
+        {
+            other.gameObject.SetActive(false);
+            LevelManager.instance.IncrementScore();
+        }
+
         if (other.CompareTag("GameOver"))
             LevelManager.instance.Fail();
     }
