@@ -1,6 +1,6 @@
 # Test Project | Endless Faller 
 
-*Test project for applicants*: Requires **Unity 2019.4.5f1**. 
+*Test project for applicants*: Requires **Unity 2019.4.20f1**. 
 
 ![example](Images/example-faller.gif)
 
