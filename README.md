@@ -35,7 +35,7 @@ Remember to read both this *README* and the *REQUIREMENTS* before starting to wo
 
 - Split the requirements into sub tasks and estimate the time it would take for each one.
 - Send an email to <bernhard.fercher@innerspace.eu> with your estimations. 
-- Optionally, contact Gottfried Eibner for requirements clarification. 
+- Optionally, contact Bernhard Fercher for requirements clarification. 
 
 ### Implementation 
 
