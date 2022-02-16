@@ -27,15 +27,15 @@ Remember to read both this *README* and the *REQUIREMENTS* before starting to wo
 - Clone this repository. 
 - Develop as you would do in a normal project. 
 - Do not use copyright/third party libraries. 
-- Upload this project to a public or private repository in your account and invite [Bernhard Fercher](https://github.com/bfercher) to it. 
+- Upload this project to a public or private repository in your account and invite [Vitaly Popuzin](https://github.com/popuz) to it. 
 
 ## Delivery 
 
 ### Before implementation 
 
 - Split the requirements into sub tasks and estimate the time it would take for each one.
-- Send an email to <bernhard.fercher@innerspace.eu> with your estimations. 
-- Optionally, contact Bernhard Fercher for requirements clarification. 
+- Send an email to <vitaly.popuzin@innerspace.eu> with your estimations. 
+- Optionally, contact Vitaly Popuzin for requirements clarification. 
 
 ### Implementation 
 
@@ -45,22 +45,19 @@ Remember to read both this *README* and the *REQUIREMENTS* before starting to wo
 
 - Comment the execution time for each issue closed. You can also add some extra information explaining why a task took less or more time than the estimated.
 - Review the project (what you learn, where you struggle, what you liked from what you did, if we should pay attention on a particular piece of the project). You can use the *Review.md* for this. 
-- Tag the final commit as "Release" and [upload the build to the GitHub releases page](https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository). 
-- Inform Bernhard Fercher of the finished projects. 
+- Tag the final commit as "Release". 
+- Inform Vitaly Popuzin of the finished projects. 
 
 ## Evaluation criteria 
 
-- Project completion (provided build and project) 
-- Whole feel of the game
-- User experience
 - Structure of the 
     - project (scene ordering, how you set up components, nesting, etc)
     - code (how you define entry points, connections between scripts and nest your logic)
-- How and which software patterns you use. 
-- Maintainability and cleanliness of your code. 
-- How you test your code. 
-- Creativity 
+- How and which software patterns you use
+- Maintainability and cleanliness of your code 
+- How you test your code
+- Whole feel of the game and creativity 
 
 --- 
 
-Questions at any time to <bernhard.fercher@innerspace.eu>
+Questions at any time to <vitaly.popuzin@innerspace.eu>
