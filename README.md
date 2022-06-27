@@ -60,4 +60,4 @@ Remember to read both this *README* and the *REQUIREMENTS* before starting to wo
 
 --- 
 
-Questions at any time to <vitaly.popuzin@innerspace.eu>
+Questions at any time to <philipp.ottensamer@innerspace.eu>
