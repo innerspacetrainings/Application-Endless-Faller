@@ -27,14 +27,14 @@ Remember to read both this *README* and the *REQUIREMENTS* before starting to wo
 - Clone this repository. 
 - Develop as you would do in a normal project. 
 - Do not use copyright/third party libraries. 
-- Upload this project to a public or private repository in your account and invite [Philipp Ottensamer](philipp.ottensamer@innerspace.eu) to it. 
+- Upload this project to a public or private repository in your account and invite Philipp Ottensamer <philipp.ottensamer@innerspace.eu> to it. 
 
 ## Delivery 
 
 ### Before implementation 
 
 - Split the requirements into sub tasks and estimate the time it would take for each one.
-- Send an email to <philipp.ottensamer@innerspace.eu> with your estimations. 
+- Send an email to Philipp Ottensamer with your estimations. 
 - Optionally, contact Vitaly Popuzin for requirements clarification. 
 
 ### Implementation 
