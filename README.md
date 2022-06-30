@@ -27,7 +27,7 @@ Remember to read both this *README* and the *REQUIREMENTS* before starting to wo
 - Clone this repository. 
 - Develop as you would do in a normal project. 
 - Do not use copyright/third party libraries. 
-- Upload this project to a public or private repository in your account and invite [Vitaly Popuzin](https://github.com/popuz) to it. 
+- Upload this project to a public or private repository in your account and invite [Philipp Ottensamer](philipp.ottensamer@innerspace.eu) to it. 
 
 ## Delivery 
 
