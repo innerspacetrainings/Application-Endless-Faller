@@ -35,7 +35,7 @@ Remember to read both this *README* and the *REQUIREMENTS* before starting to wo
 
 - Split the requirements into sub tasks and estimate the time it would take for each one.
 - Send an email to Philipp Ottensamer with your estimations. 
-- Optionally, contact Vitaly Popuzin for requirements clarification. 
+- Optionally, contact Philipp Ottensamer for requirements clarification. 
 
 ### Implementation 
 
