@@ -8,7 +8,7 @@
 
 Implement a simple endless falling game where the character must fall between platforms to stay on screen. 
 
-- Don't spend more than 6-8 hours for working on it. 
+- Don't spend more than 4 hours for working on it. 
 - Concentrate on the gameplay experience, data structures, architecture and separation of concerns.
 - Everything in the project is used for your reference, you can use any of the assets or completely remove all of them. 
 - You aren't required to use custom assets, you can use unity default shapes, build your own, or put some cubes together to get a desired shape. *You won't be evaluated in your 3D skills*, instead **the subject of evaluation will be**:
