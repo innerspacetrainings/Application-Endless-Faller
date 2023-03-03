@@ -46,7 +46,7 @@ Remember to read both this *README* and the *REQUIREMENTS* before starting to wo
 - Comment the execution time for each issue closed. You can also add some extra information explaining why a task took less or more time than the estimated.
 - Review the project (what you learn, where you struggle, what you liked from what you did, if we should pay attention on a particular piece of the project). You can use the *Review.md* for this. 
 - Tag the final commit as "Release". 
-- Inform Vitaly Popuzin of the finished projects. 
+- Inform Philipp Ottensamer of the finished projects. 
 
 ## Evaluation criteria 
 
